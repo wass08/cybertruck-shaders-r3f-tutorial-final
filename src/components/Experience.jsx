@@ -8,6 +8,7 @@ import { Cybertruck } from "./Cybertruck";
 
 import { useFrame } from "@react-three/fiber";
 import gsap from "gsap";
+import { button, useControls } from "leva";
 import { useLayoutEffect, useRef } from "react";
 import * as THREE from "three";
 
@@ -21,6 +22,10 @@ export const Experience = () => {
   const triangle = useRef();
 
   const tl = useRef();
+
+  useControls({
+    "vroom vroom": button(() => tl.current.restart()),
+  });
 
   useFrame((_state, delta) => {
     podium.current.rotation.y += delta / 2;
